@@ -4,6 +4,8 @@ import QuizStart from "../components/QuizStart";
 import { fetchQuestionQuiz } from "../redux/actions/questionActions";
 import { connect } from "react-redux";
 import PropTypes from 'prop-types'
+import _StyleSheet from '../../assets/styles'
+import _Header from '../components/commons/_Header'
 
 class Quiz extends Component {
 
@@ -27,7 +29,7 @@ class Quiz extends Component {
     if (this.props.randomQuestionQuiz.isFetching) {
       content = <ActivityIndicator size="large" />;
     }
-    return <View >{content}</View>;
+    return <View ><_Header title= 'Quiz'/><View style = {_StyleSheet.container}>{content}</View></View>;
 
   }
 }

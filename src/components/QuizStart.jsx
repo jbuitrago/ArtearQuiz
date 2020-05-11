@@ -2,15 +2,14 @@ import React, { Component } from "react";
 import {
   StyleSheet,
   FlatList,
-  Text,
   View,
-  Button,
-  TouchableOpacity,
 } from "react-native";
+import { Text, Header,Icon } from "react-native-elements"
 import { useNavigation } from "@react-navigation/native";
 import PropTypes from "prop-types";
 import QuizAnswers from "./QuizAnswers";
 import QuizResult from "./QuizResult";
+import _StyleSheet from "../../assets/styles";
 export default class QuizStart extends Component {
   constructor(props) {
     super(props);
@@ -97,21 +96,19 @@ export default class QuizStart extends Component {
     } = this.state;
 
     return (
-      <View>
-      <QuizResult score={score}></QuizResult>
-        <View>
+     
+       <View style = {_StyleSheet.questionsStart}>
           {/* Question*/}
           {displayResult === false && (
-            <Text>
+            <Text h4 >
               Question {currentQuestion + 1} / {this.props.questions.length}
             </Text>
           )}
           {displayResult === false && (
-            <Text>
+            <Text h4 >
               {number} - {question}{" "}
             </Text>
           )}
-        </View>
         {/* Answers*/}
         {displayResult === false &&
           answers.map((item, i) => {

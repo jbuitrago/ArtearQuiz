@@ -1,42 +1,52 @@
 import React, { useState } from 'react';
-import {
-  Button,
-  StyleSheet,
-  Text,
-  View,
-  Title,
-  ImageBackground,
-  Image,
-  TouchableOpacity
-} from "react-native";
+import { useNavigation } from "@react-navigation/native"
+import { Text } from "react-native-elements"
+import _StyleSheet from '../../assets/styles'
 
+import {
+  View,TouchableOpacity
+
+} from "react-native";
 
 import { Rating, AirbnbRating } from "react-native-elements";
 
-const QuizResult = () => {
 
-  const { score } = useState();  
+const QuizResult = props => {
+
+  
+  const navigation = useNavigation();
   return (
-    <View >
-          <AirbnbRating
+
+      <View  style={_StyleSheet.result}>
+      <TouchableOpacity
+       >
+        <AirbnbRating
             count={10}
             reviews={[
-              "Terrible",
-              "Bad",
-              "Meh",
-              "OK",
-              "Good",
-              "Hmm...",
-              "Very Good",
-              "Wow",
-              "Amazing",
-              "Unbelievable",
-              "Jesus",
+              "1",
+              "2",
+              "3",
+              "4",
+              "5",
+              "6",
+              "7",
+              "8",
+              "9",
+              "10"
             ]}
-            defaultRating={score}
+            defaultRating={props.score}
             size={20}
           />
-    </View>
+      </TouchableOpacity>
+
+      <Text h1>Game Over</Text>
+      <Text h4>Correct Answer: {props.score}</Text>
+      <Text h4>Incorrect Answer: {10-props.score}</Text>
+      <TouchableOpacity  onPress={() => navigation.navigate("Quiz")}>
+      <Text h2> Play Again </Text> 
+      </TouchableOpacity>
+      </View>
+
   );
 };
 

@@ -1,9 +1,11 @@
 import React, { Component } from "react";
-import { StyleSheet, View, ActivityIndicator } from "react-native";
+import { StyleSheet, View, ActivityIndicator } from "react-native"
 import QuestionList from "../components/QuestionList";
-import { fetchQuestion } from "../redux/actions/questionActions";
+import { fetchQuestion } from "../redux/actions/questionActions"
 import { connect } from "react-redux";
 import PropTypes from 'prop-types'
+import _StyleSheet from '../../assets/styles'
+import _Header from '../components/commons/_Header'
 
 class Question extends Component {
 
@@ -17,7 +19,7 @@ class Question extends Component {
     if (this.props.randomQuestion.isFetching) {
       content = <ActivityIndicator size="large" />;
     }
-    return (<View>{content}</View>);
+    return (<View><_Header title= 'Questions'/><View style = {_StyleSheet.container}>{content}</View></View>);
 
   }
 }
@@ -28,27 +30,6 @@ Question.propTypes = {
   fetchQuestion: PropTypes.func.isRequired,
   randomQuestion: PropTypes.object.isRequired
 };
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    padding: 24,
-    backgroundColor: "#F5F5F5",
-    justifyContent: 'center', //Centered vertically
-    alignItems: 'center', // Centered horizontally
-  },
-  button: {
-    backgroundColor: "#707070",
-    borderRadius: 10,
-    paddingVertical: 15,
-    alignItems: "center",
-    justifyContent: "center",
-    width: 208,
-    marginTop: 20,
-    padding: 10,
-  },
-});
-
 
 
 const mapStateToProps = state => {
